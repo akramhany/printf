@@ -13,15 +13,12 @@
 int _printf(const char *format, ...)
 {
 	va_list ap;
-	int formatLength = 0, literals = 0;
+	int formatLength = 0;
 	int i = 0, bufferSize = 0, totalPrintedChars = 0;
 	char *buffer;
 
 	while (format[formatLength] != '\0')
 	{
-		if (format[formatLength] == '%' && format[formatLength + 1] != '%')
-			literals++;
-
 		formatLength++;
 	}
 

@@ -22,6 +22,9 @@ int _printf(const char *format, ...)
 		formatLength++;
 	}
 
+	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
+		return (-1);
+
 	va_start(ap, format);
 	buffer = malloc(formatLength);
 

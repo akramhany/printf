@@ -81,5 +81,7 @@ int _printf(const char *format, ...)
 
 	va_end(ap);
 
+	free (buffer);
+
 return (totalPrintedChars);
 }

@@ -19,8 +19,6 @@ int _printf(const char *format, ...)
 
 	while (format[formatLength] != '\0')
 	{
-		if (format[formatLength] == NULL)
-			break;
 		formatLength++;
 	}
 

@@ -19,10 +19,14 @@ int _printf(const char *format, ...)
 
 	while (format[formatLength] != '\0')
 	{
+		if (format[formatLength] == NULL)
+			break;
 		formatLength++;
 	}
 
-	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
+	if (format == NULL || (format[0] == '%' && !format[1]))
+		return (-1);
+	if (format[0] == '%' && format[1] == ' ' && !format[2])
 		return (-1);
 
 	va_start(ap, format);

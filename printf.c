@@ -15,7 +15,7 @@ int _printf(const char *format, ...)
 	va_list ap;
 	int formatLength = 0;
 	int i = 0, bufferSize = 0, totalPrintedChars = 0;
-	char *buffer;
+	char *buffer, *temp1;
 
 	while (format[formatLength] != '\0')
 	{
@@ -77,7 +77,10 @@ int _printf(const char *format, ...)
 		write(1, buffer, bufferSize);
 	}
 
+	temp1 = "\0";
+	write(1, temp1, 1);
+
 	va_end(ap);
 
-return (totalPrintedChars);
+return (totalPrintedChars + 1);
 }

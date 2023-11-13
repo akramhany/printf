@@ -23,7 +23,6 @@ int _printf(const char *format, ...)
 	}
 
 	va_start(ap, format);
-	
 	buffer = malloc(formatLength);
 
 	while (i < formatLength)
@@ -78,7 +77,6 @@ int _printf(const char *format, ...)
 
 		i++;
 	}
-	
 	if (bufferSize != 0)
 	{
 		write(1, buffer, bufferSize);

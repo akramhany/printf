@@ -26,8 +26,6 @@ int _printf(const char *format, ...)
 	
 	buffer = malloc(formatLength);
 
-	totalPrintedChars = formatLength - 1;
-
 	while (i < formatLength)
 	{
 		if (format[i] == '%')
@@ -52,8 +50,8 @@ int _printf(const char *format, ...)
 				{
 					k++;
 				}
-				write(1, s, k - 1);
-				totalPrintedChars += (k - 1);
+				write(1, s, k);
+				totalPrintedChars += k;
 			}
 			else if (format[i] == '%')
 			{
@@ -67,6 +65,7 @@ int _printf(const char *format, ...)
 		{
 			buffer[bufferSize] = format[i];
 			bufferSize++;
+			totalPrintedChars++;
 		}
 
 		i++;
@@ -82,5 +81,5 @@ int _printf(const char *format, ...)
 
 	va_end(ap);
 
-return (totalPrintedChars + 1);
+return (totalPrintedChars);
 }

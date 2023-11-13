@@ -10,9 +10,26 @@
 int main(void)
 {
     int len = _printf("Let's try to printf a simple sentence.\n");
-    int len2 = printf("Let's try to printf a simple sentence.\n");
+    int len2 = printf("Let's try to printf a simple sentence.\n");    
+    printf("_printf: %d, printf: %d\n", len, len2);
+ 
+    printf("--------------------------------\n");
+
+    len = _printf("Character:[%c]\n", 'H');
+    len2 = printf("Character:[%c]\n", 'H');
+    printf("_printf: %d, printf: %d\n", len, len2);
     
-    printf("_printf: %d, printf: %d", len, len2);
+    printf("--------------------------------\n");
+
+    len = _printf("String:[%s]\n", "I am a string !");
+    len2 = printf("String:[%s]\n", "I am a string !");
+    printf("_printf: %d, printf: %d\n", len, len2);
+
+    printf("--------------------------------\n");
+
+    len = _printf("Percent:[%%]\n");
+    len2 = printf("Percent:[%%]\n");
+    printf("_printf: %d, printf: %d\n", len, len2);
 
     /*printf("Length:[%d, %i]\n", len2, len2);
     _printf("Negative:[%d]\n", -762534);

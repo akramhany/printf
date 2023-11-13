@@ -35,17 +35,17 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			Write(1, buffer, bufferSize);
+			write(1, buffer, bufferSize);
 			bufferSize = 0;
 			i++;
 
 			if (format[i] == 'c')
 			{
-				char c = va_arg(ap, char);
-				Write(1, c, 1);
+				char * c = va_arg(ap, int);
+				write(1, c, 1);
 				totalPrintedChars++;
 			}
-			else if (format[i] = 's')
+			else if (format[i] == 's')
 			{
 				int k = 0;
 				char *s = va_arg(ap, char*);
@@ -54,12 +54,13 @@ int _printf(const char *format, ...)
 				{
 					k++;
 				}
-				Write(1, s, k);
+				write(1, s, k - 1);
 				totalPrintedChars += (k - 1);
 			}
-			else if (format[i] = '%')
+			else if (format[i] == '%')
 			{
-				Write(1, '%', 1);
+				char *c = "%";
+				write(1, c, 1);
 				totalPrintedChars++;
 			}
 
@@ -72,6 +73,8 @@ int _printf(const char *format, ...)
 
 		i++;
 	}
+
+	va_end(ap);
 
 return (totalPrintedChars);
 }

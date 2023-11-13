@@ -71,6 +71,11 @@ int _printf(const char *format, ...)
 
 		i++;
 	}
+	
+	if (bufferSize != 0)
+	{
+		write(1, buffer, bufferSize);
+	}
 
 	va_end(ap);
 

@@ -25,7 +25,7 @@ int _printf(const char *format, ...)
 		formatLength++;
 	}
 
-	va_start(ap, literals);
+	va_start(ap, format);
 	
 	buffer = malloc(formatLength);
 
@@ -41,8 +41,9 @@ int _printf(const char *format, ...)
 
 			if (format[i] == 'c')
 			{
-				char * c = va_arg(ap, int);
-				write(1, c, 1);
+				char c = va_arg(ap, int);
+				char *temp = &c;
+				write(1, temp, 1);
 				totalPrintedChars++;
 			}
 			else if (format[i] == 's')

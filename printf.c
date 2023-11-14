@@ -83,6 +83,9 @@ int _printf(const char *format, ...)
 		write(1, buffer, bufferSize);
 	}
 
+	temp1 = "\0";
+	write(1, temp1, 1);
+
 	va_end(ap);
 
 	free (buffer);

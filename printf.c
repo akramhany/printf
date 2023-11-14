@@ -30,6 +30,9 @@ int _printf(const char *format, ...)
 	va_start(ap, format);
 	buffer = malloc(formatLength);
 
+	if (!buffer)
+		return (-1);
+
 	while (i < formatLength)
 	{
 		if (format[i] == '%')

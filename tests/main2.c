@@ -11,12 +11,12 @@
  */
 int main(void)
 {
-	int len1, len2;
+	int len, len2;
 
-	len1 = _printf("hello \0 hey %s\n", "hey");
-	printf("\n-----------------------------\n");
-	len2 = printf("hello \0 hey %s\n", "hey");
-	
-	printf("\n printf: %d, _printf: %d\n", len2, len1);
+	len = _printf("Percent:[%%]\n");
+   	len2 = printf("Percent:[%%]\n");
+    	_printf("Len:[%d]\n", len);
+    	printf("Len:[%d]\n", len2);
+
 	return (0);
 }

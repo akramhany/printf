@@ -68,15 +68,6 @@ int _printf(const char *format, ...)
 				write(1, c, 1);
 				totalPrintedChars++;
 			}
-			else
-			{
-				char *c = "%";
-				char k = format[i];
-				write(1, c, 1);
-				c = &k;
-				write(1, c, 1);
-				totalPrintedChars += 2;
-			}
 		}
 		else
 		{

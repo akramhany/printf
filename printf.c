@@ -22,6 +22,11 @@ int PrintInteger(int integer)
 		integer = -integer;
 		sign = 1;
 	}
+	else if (integer == 0)
+	{
+		write(1, &integer, 1);
+		return (1);
+	}
 	
 	k = integer;
 	while (k > 0)

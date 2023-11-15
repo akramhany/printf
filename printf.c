@@ -53,7 +53,7 @@ int _printf(const char *format, ...)
 				char *s = va_arg(ap, char*);
 
 				if (s == NULL)
-					return (-1);
+					s = "(null)";
 
 				while (s[k] != '\0')
 				{

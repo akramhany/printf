@@ -77,6 +77,7 @@ int _printf(const char *format, ...)
 				
 				write(1, &c, 1);
 				write(1, &k, 1);
+				totalPrintedChars++;
 			}
 		}
 		else

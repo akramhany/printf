@@ -13,7 +13,7 @@ int main(void)
 {
 	int len;
 
-	len = _printf(NULL);
+	len = _printf("%!\n");
     	printf("Len:[%d]\n", len);
 
 	return (0);

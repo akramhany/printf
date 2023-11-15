@@ -70,6 +70,14 @@ int _printf(const char *format, ...)
 				write(1, c, 1);
 				totalPrintedChars++;
 			}
+			else
+			{
+				char c = '%';
+				char k = format[i];
+				
+				write(1, &c, 1);
+				write(1, &k, 1);
+			}
 		}
 		else
 		{

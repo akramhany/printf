@@ -1,9 +1,6 @@
 #include <limits.h>
 #include <stdio.h>
 #include "../main.h"
-#include "../printf.c"
-#include "../GetStringSize.c"
-#include "../HandleLiterals.c"
 
 /**
  * main - Entry point

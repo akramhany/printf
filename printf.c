@@ -24,7 +24,8 @@ int PrintInteger(int integer)
 	}
 	else if (integer == 0)
 	{
-		write(1, &integer, 1);
+		char c = '0';
+		write(1, &c, 1);
 		return (1);
 	}
 	

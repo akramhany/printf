@@ -1,7 +1,6 @@
 #include "main.h"
 #include <stdarg.h>
 #include <unistd.h>
-#include <stdio.h>
 
 /**
  * PrintInteger - prints an integer to the stdout
@@ -12,7 +11,7 @@
 
 int PrintInteger(int integer)
 {
-	int length = 0, k = 0, tempLength = 0;
+	int length = 0, k = 0, tempLength = 0, sign = 0;
 	char *arr = NULL;
 
 
@@ -21,6 +20,7 @@ int PrintInteger(int integer)
 		char c = '-';
 		write(1, &c, 1);
 		integer = -integer;
+		sign = 1;
 	}
 	
 	k = integer;
@@ -57,7 +57,7 @@ int PrintInteger(int integer)
 	}
 
 	free(arr);
-	return (length);
+	return (length + sign);
 }
 
 

@@ -1,6 +1,65 @@
 #include "main.h"
 #include <stdarg.h>
 #include <unistd.h>
+#include <stdio.h>
+
+/**
+ * PrintInteger - prints an integer to the stdout
+ * @integer: the integer to print
+ *
+ * Return: the length of the passed integer
+ **/
+
+int PrintInteger(int integer)
+{
+	int length = 0, k = 0, tempLength = 0;
+	char *arr = NULL;
+
+
+	if (integer < 0)
+	{
+		char c = '-';
+		write(1, &c, 1);
+		integer = -integer;
+	}
+	
+	k = integer;
+	while (k > 0)
+	{
+		k = k / 10;
+		length++;
+	}
+
+	arr = malloc(sizeof(char) * length);
+	
+	k = integer;
+	tempLength = length;
+
+	while (tempLength > 0)
+	{
+		int temp = k;
+
+		k = (k / 10);
+		k *= 10;
+		arr[tempLength - 1] = 48 + (temp - k);
+	       	k /= 10;	
+		tempLength--;
+	}
+
+	tempLength = 0;
+
+	while (tempLength < length)
+	{
+		char c = arr[tempLength];
+
+		write(1, &c, 1);
+		tempLength++;
+	}
+
+	free(arr);
+	return (length);
+}
+
 
 /**
  * HandleLiterals - takes a string and handle "%" literals in it
@@ -41,6 +100,13 @@ int HandleLiterals(const char *string, int index, void *arg)
 
 		write(1, &c, 1);
 		return (1);
+	}
+	else if (string[index] == 'd' || string[index] == 'i')
+	{
+		int *ptr = (int *)arg;
+		int length = PrintInteger(*ptr);
+
+		return (length);
 	}
 	else
 	{
@@ -121,6 +187,11 @@ int _printf(const char *format, ...)
 			}
 			else if (format[i] == 's')
 				outputedStringSize = HandleLiterals(format, i, va_arg(ap, char *));
+			else if (format[i] == 'd' || format[i] == 'i')
+			{
+				int k = va_arg(ap, int);
+				outputedStringSize = HandleLiterals(format, i, &k);
+			}
 			else
 				outputedStringSize = HandleLiterals(format, i, NULL);
 

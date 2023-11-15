@@ -1,6 +1,8 @@
 #include <stdarg.h>
 #include <unistd.h>
 #include "main.h"
+#include "GetStringSize.c"
+#include "HandleLiterals.c"
 
 /**
  * _printf - output a string to the std output.

@@ -9,9 +9,9 @@
  * Return: the length of the passed integer
  **/
 
-int PrintInteger(int integer)
+int PrintInteger(long integer)
 {
-	int length = 0, k = 0, tempLength = 0, sign = 0;
+	long length = 0, k = 0, tempLength = 0, sign = 0;
 	char *arr = NULL;
 
 

@@ -11,7 +11,7 @@ int main(void)
 {
 	int len;
 
-	len = _printf("%d", 0);
+	len = _printf("%d", -2147483648);
     	printf("Len:[%d]\n", len);
 
 	return (0);

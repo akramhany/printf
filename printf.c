@@ -90,5 +90,5 @@ int _printf(const char *format, ...)
 
 	free (buffer);
 
-return (totalPrintedChars);
+return (totalPrintedChars - 1);
 }

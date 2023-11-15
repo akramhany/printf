@@ -7,7 +7,7 @@
  * @format: The string that will be outputed to the stdout.
  * @...: The variabels that would be outputed in the string.
  *
- * Return: the number of characters printed (excluding the null byte used to end the output string)
+ * Return: the number of characters printed (excluding the null byte)
  */
 
 int _printf(const char *format, ...)
@@ -19,15 +19,11 @@ int _printf(const char *format, ...)
 
 	if (format == NULL || (format[0] == '%' && !format[1]))
 		return (-1);
-	
+
 	if (format[0] == '%' && format[1] == ' ' && !format[2])
 		return (-1);
-	
-	while (format[formatLength] != '\0')
-	{
-		formatLength++;
-	}
 
+	formatLength = GetStringSize(format);
 
 	va_start(ap, format);
 	buffer = malloc(formatLength);
@@ -39,46 +35,24 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
+			int outputedStringSize = -1;
+
 			write(1, buffer, bufferSize);
 			bufferSize = 0;
 			i++;
-
 			if (format[i] == 'c')
 			{
 				char c = va_arg(ap, int);
-				write(1, &c, 1);
-				totalPrintedChars++;
+
+				outputedStringSize = HandleLiterals(format, i, &c);
 			}
 			else if (format[i] == 's')
-			{
-				int k = 0;
-				char *s = va_arg(ap, char*);
-
-				if (s == NULL)
-					s = "(null)";
-
-				while (s[k] != '\0')
-				{
-					k++;
-				}
-				write(1, s, k);
-				totalPrintedChars += k;
-			}
-			else if (format[i] == '%')
-			{
-				char *c = "%";
-				write(1, c, 1);
-				totalPrintedChars++;
-			}
+				outputedStringSize = HandleLiterals(format, i, va_arg(ap, char *));
 			else
-			{
-				char c = '%';
-				char k = format[i];
-				
-				write(1, &c, 1);
-				write(1, &k, 1);
-				totalPrintedChars += 2;
-			}
+				outputedStringSize = HandleLiterals(format, i, NULL);
+
+			if (outputedStringSize != -1)
+				totalPrintedChars += outputedStringSize;
 		}
 		else
 		{
@@ -97,7 +71,7 @@ int _printf(const char *format, ...)
 
 	va_end(ap);
 
-	free (buffer);
+	free(buffer);
 
 return (totalPrintedChars);
 }

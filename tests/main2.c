@@ -11,13 +11,10 @@
  */
 int main(void)
 {
-	int len, len2;
+	int len;
 
-	len = _printf("%c", 'S');
-	len += _printf("%c", 'S');
-   	len2 = printf("%c", 'S');
+	len = _printf(NULL);
     	printf("Len:[%d]\n", len);
-    	printf("Len:[%d]\n", len2);
 
 	return (0);
 }

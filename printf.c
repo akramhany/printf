@@ -17,15 +17,17 @@ int _printf(const char *format, ...)
 	int i = 0, bufferSize = 0, totalPrintedChars = 0;
 	char *buffer;
 
+	if (format == NULL || (format[0] == '%' && !format[1]))
+		return (-1);
+	
+	if (format[0] == '%' && format[1] == ' ' && !format[2])
+		return (-1);
+	
 	while (format[formatLength] != '\0')
 	{
 		formatLength++;
 	}
 
-	if (format == NULL || (format[0] == '%' && !format[1]))
-		return (-1);
-	if (format[0] == '%' && format[1] == ' ' && !format[2])
-		return (-1);
 
 	va_start(ap, format);
 	buffer = malloc(formatLength);
